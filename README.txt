@@ -1,0 +1,1 @@
+This repository will serve as a demonstration of my wonderful adventure through the world of computational biology. This repository will store homework and lab assignments for the course.
