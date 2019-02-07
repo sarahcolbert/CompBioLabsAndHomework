@@ -5,19 +5,18 @@
 #store number of times you need to complete task, for this problem, 10
 j <- 10
 #use for loop
-# i is index
+#i is counter/index variable
+#"1:j" is range of values for iterator variable
 #whatever is inside {} is repeated n times
 for (i in 1:j) {
     print("hi")
 }
 
-
 #####################
 #Lab Step 2
 #####################
-#Write for loop for funtion for 8 weeks 
+#Set up place to store and initialize vector
 v <- 8
-#initialize vector
 res <- rep(NA, v)
 #use for loop
 #store result inside 'res'
@@ -30,11 +29,11 @@ for(i in 1:v) {
 #Lab Step 3
 #####################
 #store and initialize
-#store inital population (2000) in first entry of vector
 m <- 7
 pop <- rep(NA, m)
+#store inital population (2000) in first entry of vector
 pop[1] <- 2000
-#use for loop
+#find populations for each step if populations are decreasing by 5%
 for(i in 1:m) {
     print(pop[i+1] <- pop[i]-pop[i]*.05)
 }
@@ -43,28 +42,27 @@ for(i in 1:m) {
 #####################
 #Lab Step 4
 #####################
-#perform discrete-time logistic growth equation
 #store values
 t <- 12
 abundance <- rep(NA, t)
 abundance[1] <- 2500
 K <- 10000
 r <- 0.8
-#create for loop
+#perform discrete-time logistic growth equation
 for(i in 1:t){
     print(abundance[i+1] <- abundance[i] + (0.8*abundance[i]*(1-abundance[i])/K))
 }
-#check population for abundance[12]
+#display population for abundance[12]
 print(abundance[12])
 
 
 #####################
-#Lab Step 5a and 5b GOOD
+#Lab Step 5a and 5b
 #####################
 #Use the rep command to make a vector of 18 zeros
 s <- 18
 data <- rep(NA, s)
-#use for loop
+#for values 1-18 determine the results of multiplying each by 3
 for(i in 1:s) {
     print(data[i] <- 3*i)
 }
@@ -91,15 +89,16 @@ for(i in 1:u) {
 #####################
 #Lab Step 6
 #####################
-#make a vector of the first 20 Fibonacci numbers, where the first number is 0 (zero).
+#store variables
+#initizalize vector
 f <- 20
 fib <- rep(1, f)
 fib[1] <- 0
-#make for loop
+#make a vector of the first 20 Fibonacci numbers, where the first number is 0 (zero
 for(i in 1:f) {
    (fib[i+2] <- fib[i]+fib[i+1])
 }
-#check fib vector
+#display fib 
 print(fib)
 
 
