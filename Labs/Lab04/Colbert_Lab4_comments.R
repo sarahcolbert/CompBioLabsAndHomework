@@ -49,19 +49,24 @@ abundance[1] <- 2500
 K <- 10000
 r <- 0.8
 #perform discrete-time logistic growth equation
-for(i in 1:(t-1)){
-    print(abundance[i+1] <- abundance[i] + (0.8*abundance[i]*(1-(abundance[i]/K))))
+for(i in 1:t){
+    print(abundance[i+1] <- abundance[i] + (0.8*abundance[i]*(1-abundance[i])/K))
 }
 #display population for abundance[12]
 print(abundance[12])
 
+
+###########DONE
+# SMF:  there is an error in your formula lin line 53.  Instead of (1-abundance[i])/K at the end, 
+# SMF:  you should have (1-(abundance[i]/K)).  Also, note that your loop dynamically grows the abundance 
+# SMF:  vector to a length of 13 on the very last trip through the loop
 
 #####################
 #Lab Step 5a and 5b
 #####################
 #Use the rep command to make a vector of 18 zeros
 s <- 18
-data <- rep(NA, (s-1))
+data <- rep(NA, s)
 #for values 1-18 determine the results of multiplying each by 3
 for(i in 1:s) {
     print(data[i] <- 3*i)
@@ -85,6 +90,8 @@ for(i in 1:u) {
     print(data1[i+1] <- 1+2*data1[i])
 }
 
+# SMF: note that the structure of your loop, going to u = 18 and then storing data in data1[18+1] on the 
+# SMF: last iteration causes your vector to dynamically grow to a length of 19
 
 #####################
 #Lab Step 6
@@ -95,11 +102,15 @@ f <- 20
 fib <- rep(1, f)
 fib[1] <- 0
 #make a vector of the first 20 Fibonacci numbers, where the first number is 0 (zero
-for(i in 1:(f-2)) {
-    (fib[i+2] <- fib[i]+fib[i+1])
+for(i in 1:f) {
+   (fib[i+2] <- fib[i]+fib[i+1])
 }
 #display fib 
 print(fib)
+
+# SMF: similar to issues above, this loop causes the fib vector to dynamically grow to a length of 22.
+# SMF: An easy way to fix this, with the way you have written it, would be to change the for loop to 
+# SMF: run from 1:(f-2)
 
 
 #####################
@@ -107,7 +118,7 @@ print(fib)
 #####################
 #already stored abundance
 #store time
-time <- seq(1, 12, 1)
+time <- seq(0, 12, 1)
 #make a plot
 plot(time, abundance)
 
