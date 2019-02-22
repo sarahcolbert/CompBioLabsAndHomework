@@ -19,7 +19,8 @@ Vector1 <- read.csv("Vector1.csv")
 #Step 2a: Use a for loop that checks each value in Vector1 and replaces every negative value with NA
 #turn data frame "Vector1" into readable vector "myNewVec"
 CoolNewVec <- Vector1$x
-for ( i in 1:length(CoolNewVec)) {
+q <- length (CoolNewVec)
+for ( i in 1:q) {
     if ( CoolNewVec[i] < 0){
         CoolNewVec[i] <- NA
     }
@@ -31,10 +32,13 @@ CoolNewVec[ is.na(CoolNewVec)] <- NaN
 #Step 2c: Replace all NaN values with a zero using numerical indexing
 CoolNewVec[ which(is.na(CoolNewVec))] <- 0
 
-#Step 2d+e: Determine how many of the values from the imported data fall in the range between 50 and 100. Create a vector of these values. 
+#Step 2d: Determine how many of the values from the imported data fall in the range between 50 and 100.
 LowerLim <- 50
 UpperLim <- 100
-Vec1 <- which( CoolNewVec >= LowerLim & CoolNewVec <= UpperLim)
+Vec1 <- which( CoolNewVec >= LowerLim & CoolNewVec <= UpperLim )
+length(Vec1) #498 of the values from the imported data fall in the range between 50 and 100
+
+#Step 2e: Create a vector of these values between 50 and 100
 FiftyToOneHundred <- CoolNewVec[Vec1]
 
 #Step 2f: Save vector "FiftyToOneHundred" to file named "FiftyToOneHundred.csv"
@@ -104,6 +108,8 @@ lines (time, p)
 #Step 6: Put results into a matrix named myResults with the columns "TimeStep", "PreyAbundance", and "PredatorAbundance"
 myResults <- matrix(1:3000, ncol=3)
 colnames(myResults) <- c("TimeStep", "PreyAbundance", "PredatorAbundance")
+myResults[,2] <- n
+myResults[,3] <- p
 rownames(myResults) <- c()
 
 #Step 7: Write matrix to a csv
@@ -112,4 +118,5 @@ write.csv(x = myResults, file = "PredPreyResults.csv")
 ###############
 #BONUS
 ###############
+
 
