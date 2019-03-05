@@ -55,7 +55,9 @@ zero <- 0
 nonzero <- which( CO2Gas > zero )
 nonzero #from output we see that first nonzero gas emissions was in column 135
 #Determine what year is in column 135
-CO2Data$Year[135]
+#Store year you want to find
+myYear <- 135
+CO2Data$Year[myYear]
 #1885 is the first year that gas emissions were non-zero
 
 #Step 3b: Determine which years in the data total emissions were between 200 and 300 mil metric tons of carbon
@@ -93,8 +95,8 @@ p[1] <- initPred
 #Step 3: Use a for loop to demonstrate the predator prey model using the above parameters
 #Step 4: Write a code to check if predators kill off all prey resulting in negative values and replace all negative values with 0
 for(i in 2:t){
-    print(n[i] <- n[i-1] + (r * n[i-1]) - (a * n[i-1] * p[i-1]))
-    print(p[i] <- p[i-1] + (k * a * n[i-1] * p[i-1]) - (m * p[i-1]))
+    (n[i] <- n[i-1] + (r * n[i-1]) - (a * n[i-1] * p[i-1]))
+    (p[i] <- p[i-1] + (k * a * n[i-1] * p[i-1]) - (m * p[i-1]))
     if (n[i] < 0 ) {
         n[i] <- 0
     }
@@ -107,10 +109,9 @@ lines (time, p)
     
 #Step 6: Put results into a matrix named myResults with the columns "TimeStep", "PreyAbundance", and "PredatorAbundance"
 myResults <- matrix(1:3000, ncol=3)
+myResults <- cbind(time, n, p)
 colnames(myResults) <- c("TimeStep", "PreyAbundance", "PredatorAbundance")
-myResults[,2] <- n
-myResults[,3] <- p
-rownames(myResults) <- c()
+
 
 #Step 7: Write matrix to a csv
 write.csv(x = myResults, file = "PredPreyResults.csv")
