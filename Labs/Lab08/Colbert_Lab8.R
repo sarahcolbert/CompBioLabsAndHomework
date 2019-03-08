@@ -6,7 +6,7 @@ LogGrowthMod <- function(r, K, n, t) {
     abundance <- rep(NA, t)
     abundance[1] <- n
     for(i in 1:(t-1)){
-        abundance[i+1] <- abundance[i] + (r*abundance[i]*(1-(abundance[i]/K)))
+        abundance[i+1] <- abundance[i] + (r*abundance[i]*(1-(abundance[i])/K))
     } 
     (plot(time, abundance, ##Make a plot of abundance over time with labels
                 xlab = "Time",
@@ -20,9 +20,9 @@ LogGrowthMod <- function(r, K, n, t) {
 #Call the Function with chosen parameter values 
 #r = 0.7
 #K = 15000
-#n = 300
-#t = 10
-LogGrowthResults <- LogGrowthMod(0.7, 15000, 300, 10)
+#n = 600
+#t = 14
+LogGrowthResults <- LogGrowthMod(0.7, 14000, 600, 14)
 
 #Save results in csv file
 write.csv(x = LogGrowthResults, file = "LogGrowthResults.csv")
