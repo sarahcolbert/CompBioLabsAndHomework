@@ -19,7 +19,7 @@ LogGrowthMod <- function(r, K, n, t) {
 
 #Call the Function with chosen parameter values 
 #r = 0.7
-#K = 15000
+#K = 14000
 #n = 600
 #t = 14
 LogGrowthResults <- LogGrowthMod(0.7, 14000, 600, 14)
