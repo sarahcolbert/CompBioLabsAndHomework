@@ -33,5 +33,3 @@ Looking at this function, you may notice that it does much more than just comput
 As noted above, this script also uses specific data created by the function to write a new data file. This data file includes the matrix created by the function for a **specific set of parameters** put into the argument of the function. The matrix has two columns, the first which stores the number of **generations**,  while the second stores the **population abundance** at that specific number of generations. Now you've got a cool new CSV file with lots of data you can play around with or use for other visuals/statistical analyses!
 
 ### And there you have it folks! Thanks for exploring this script with me! 
-
-
