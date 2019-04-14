@@ -1,4 +1,4 @@
-﻿
+
 # Relationships between Breed, Temperament, and Guide Dog Success
 
 ## Introduction
@@ -18,7 +18,7 @@ Through this project I hope to gain a better insight as to what kinds of behavio
 The goal of this study was to determine what, if any, factors can predict success as a guide dog. The study aimed to address the assertion that early life experiences, intelligence and behavior can be attributed to one's outcome of success, not just for dogs, but also other species like humans (Bray, Sammel, Cheney, Serpell & Seyfarth, 2017). Using guide dog program puppies as a "model" of sorts, the researchers wanted to determine the effects of maternal investment, specifically nursing behavior, and temperament on success. 
 
 ### Methodology
-The researchers followed a group of guide dog program puppies from the nursing stage (~2 weeks) all the way up until they returned to the program for more formal guide dog training. To obtain the data on temperament and cognition, the researchers created eleven tasks for each dog to complete  and then measured several variables relating to the task. For example, one task involved isolating the dog in an empty room for two minutes. Variables included percentage of time spent near room exit, number of times the dog moved between quadrants in the room, percentage of time spent mobile and percentage of time spent vocalizing (Bray et al., 2017). Information on other tests and the variables associated with them can be found in table S2 of the paper's [supplemental information](chrome-extension://oemmndcbldboiebfnladdacbdfmadadm/https://www.pnas.org/content/pnas/suppl/2017/08/02/1704303114.DCSupplemental/pnas.201704303SI.pdf?targetid=nameddest%3DSTXT). 
+The researchers followed a group of guide dog program puppies from the nursing stage (~2 weeks) all the way up until they returned to the program for more formal guide dog training. To obtain the data on temperament and cognition, the researchers created eleven tasks for each dog to complete  and then measured several variables relating to the task. For example, one task involved isolating the dog in an empty room for two minutes. Variables included percentage of time spent near room exit, number of times the dog moved between quadrants in the room, percentage of time spent mobile and percentage of time spent vocalizing (Bray et al., 2017). Information on other tests and the variables associated with them can be found in table S2 of the paper's [supplemental information](https://www.pnas.org/content/pnas/suppl/2017/08/02/1704303114.DCSupplemental/pnas.201704303SI.pdf?targetid=nameddest%3DSTXT). 
 
 ### A Look at the Data Set
 #### Format
