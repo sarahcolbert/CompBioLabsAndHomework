@@ -2,6 +2,7 @@
 ####### SUBSETTING THE DATA #######
 ###################################
 
+
 #Import Puppy Data
 guideDogData <- read.csv("puppyData.csv", stringsAsFactors = F)
 
@@ -21,11 +22,21 @@ rawPuppyData <- cbind(guideDogData, puppyZScores)
 puppyData <- rawPuppyData[complete.cases(rawPuppyData), ]
 
 
+######################################
+####### PERFORMING ANOVA TESTS #######
+######################################
+
+#load necessary libraries
+library("dplyr")
+library("broom")
+library("ggplot2")
+
 #Create a function to find average of a variable by breed
 avgByBreedFunc <- function(x){
     breedAvg <- aggregate(list (Mean = x), list(Breed = puppyData$PupBreed), mean)
     return ( breedAvg )
 }
+
 
 #Create a function to perform an ANOVA test to find p-value
 anovaFunc <- function(y){
@@ -50,18 +61,67 @@ umbAOVP <- anovaFunc(puppyData$ZPAUmResponse)
 vocNovBreed <- avgByBreedFunc(puppyData$ZNovLatVoc)
 vocAOVP <- anovaFunc(puppyData$ZNovLatVoc)
 
-#Make a table with all these results
+#Make a table that includes the avg failure rate, and variable z scores for each breed
 avgVarBreeds <- cbind(failureRatesBreed, solveTimeBreed, umbReacBreed, vocNovBreed)
-#Name "Mean" columns
+
+#Name "Mean" columns more specifically
 names(avgVarBreeds)[2] <- "failure"
 names(avgVarBreeds)[4] <- "problemSolveZ"
 names(avgVarBreeds)[6] <- "umbReactZ"
 names(avgVarBreeds)[8] <- "vocalZ"
+
 #Remove extra "Breed" columns
 breedsPerf <- avgVarBreeds[, !duplicated(colnames(avgVarBreeds))]
+
 #Add p-values from Anova Test to table by creating a new row
 newrow <- c("P-Value", failureAOVP[1], solveAOVP[1], umbAOVP[1], vocAOVP[1])
 breedsPerfandP <- rbind(breedsPerf, newrow)
+
+#####################################
+####### CREATE PLOTS BY BREED #######
+#####################################
+
+#Create a bar graph showing the average rate of failure for each breed
+failureBreedPlot <- ggplot(breedsPerf, aes(x = Breed, y = failure)) + 
+geom_bar(aes(fill = Breed), stat = "identity") + labs( y = "Average Failure Rate", title = "Breed Average Failure Rate in Guide Dog Program", caption = "based on data from: Effects of maternal investment, temperament, and cognition on guide dog success")
+
+#Create a box plot showing Z-score of breeds for time to complete multi-step problem solving task
+solveBreedPlot <- ggplot(puppyData, aes(x = PupBreed, y = ZPATorSolve, color = PupBreed)) + geom_boxplot() + labs (x = "Breed" , y = "Z-score", title = "Time Required to Complete Multi-step Problem Solving Task", caption = "based on data from: Effects of maternal investment, temperament, and cognition on guide dog success")
+
+#Create a box plot showing Z-score of breeds for vocalizing test
+vocBreedPlot <- ggplot(puppyData, aes(x = PupBreed, y = ZNovLatVoc, color = PupBreed)) + geom_boxplot() + labs (x = "Breed" , y = "Z-score", title = "Latency to Vocalize when Introduced to a Novel Object", caption = "based on data from: Effects of maternal investment, temperament, and cognition on guide dog success")
+
+#Create a box plot showing Z-score of breeds for initial reaction to umbrella opening
+umbBreedPlot <- ggplot(puppyData, aes(x = PupBreed, y = ZPAUmResponse, color = PupBreed)) + geom_boxplot() + labs (y = "Z-score", title = "Initial Reaction to Umbrella Opening", caption = "based on data from: Effects of maternal investment, temperament, and cognition on guide dog success")
+
+###############################
+####### DATA ANALYSIS 2 #######
+###############################
+
+##From the P-values in table "breedsPerfandP" we see that there was significant differnces between breeds for umbrella reaction scores and the vocalization test
+#A tukey HSD test should be performed for these variables
+
+#Tukey test for umbrella reactions
+umbAOV <- aov( data = puppyData, ZPAUmResponse ~ PupBreed)
+anova(umbAOV)
+umbTky <- as.data.frame(TukeyHSD(umbAOV)$PupBreed)
+umbTky$pair <- rownames(umbTky)
+#Cre
+
+
+umbHSD <- TukeyHSD(x=umbAOV, 'puppyData$PupBreed', conf.level =0.95)
+tky <- as.data.frame(umbHSD)
+plot(umbHSD)
+
+#plot tukey results
+
+
+
+
+
+
+
+
 
 
 
