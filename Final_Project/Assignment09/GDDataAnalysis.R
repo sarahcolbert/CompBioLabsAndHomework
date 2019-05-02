@@ -90,13 +90,13 @@ failureBreedPlot <- ggplot(breedsPerf, aes(x = Breed, y = failure)) +
 geom_bar(aes(fill = Breed), stat = "identity") + labs( y = "Failure Rate", title = "Failure rate in guide dog program by breed", caption = "There were no statistically significant differences between breed failure means \n(F(2,95) = 0.925, p = .4000).") + theme(plot.title = element_text(hjust = 0.50), plot.caption = element_text(hjust = 0, face = "italic")) + theme(legend.position = "none")
 
 #Create a box plot showing Z-score of breeds for time to complete multi-step problem solving task
-solveBreedPlot <- ggplot(puppyData, aes(x = PupBreed, y = ZPATorSolve, color = PupBreed)) + geom_boxplot() + labs (x = "Breed" , y = "Z-score", title = "Time required to complete multi-step problem solving task", caption = "There were no statistically significant differences between breed problem solving ability \nmeans (F(2,95) = 2.025, p = .1377).") + theme(plot.title = element_text(hjust = 0.50), plot.caption = element_text(hjust = 0, face = "italic"), legend.position = "none")
+solveBreedPlot <- ggplot(puppyData, aes(x = PupBreed, y = ZPATorSolve, color = PupBreed)) + geom_boxplot() + labs (x = "Breed" , y = "Z-score", title = "Time required to complete multi-step problem \nsolving task", caption = "There were no statistically significant differences between breed problem solving \nability means (F(2,95) = 2.025, p = .1377).") + theme(plot.title = element_text(hjust = 0.50), plot.caption = element_text(hjust = 0, face = "italic"), legend.position = "none")
 
 #Create a box plot showing Z-score of breeds for vocalizing test
-vocBreedPlot <- ggplot(puppyData, aes(x = PupBreed, y = ZNovLatVoc, color = PupBreed)) + geom_boxplot() + labs (x = "Breed" , y = "Z-score", title = "Latency to vocalize when introduced to a novel object", caption = "There were statistically significant differences between breed latency to vocalize means \n(F(2,95) = 4.868, p = .0097).") + theme(plot.title = element_text(hjust = 0.50), plot.caption = element_text(hjust = 0, face = "italic"), legend.position = "none")
+vocBreedPlot <- ggplot(puppyData, aes(x = PupBreed, y = ZNovLatVoc, color = PupBreed)) + geom_boxplot() + labs (x = "Breed" , y = "Z-score", title = "Latency to vocalize when introduced to a novel object", caption = "There were statistically significant differences between breed latency to vocalize \nmeans (F(2,95) = 4.868, p = .0097).") + theme(plot.title = element_text(hjust = 0.50), plot.caption = element_text(hjust = 0, face = "italic"), legend.position = "none")
 
 #Create a box plot showing Z-score of breeds for initial reaction to umbrella opening
-umbBreedPlot <- ggplot(puppyData, aes(x = PupBreed, y = ZPAUmResponse, color = PupBreed)) + geom_boxplot() + labs (y = "Z-score", x = "Breed" , title = "Initial reaction to umbrella opening", caption = "There were statistically significant differences between breed umbrella reaction score \nmeans (F(2,95) = 7.335, p = .0011).") + theme(plot.title = element_text(hjust = 0.50), plot.caption = element_text(hjust = 0, face = "italic"), legend.position = "none")
+umbBreedPlot <- ggplot(puppyData, aes(x = PupBreed, y = ZPAUmResponse, color = PupBreed)) + geom_boxplot() + labs (y = "Z-score", x = "Breed" , title = "Initial reaction to umbrella opening", caption = "There were statistically significant differences between breed umbrella reaction \nscore means (F(2,95) = 7.335, p = .0011).") + theme(plot.title = element_text(hjust = 0.50), plot.caption = element_text(hjust = 0, face = "italic"), legend.position = "none")
 
 #Put all of the previous made plots into one big page
 breedPlots <- cowplot::plot_grid(failureBreedPlot, solveBreedPlot, vocBreedPlot, umbBreedPlot, labels = "AUTO")
@@ -129,10 +129,15 @@ vocTky <- as.data.frame(TukeyHSD(vocBreedAOV)$PupBreed)
 #Plot Tukey Results for vocalizaiton
 vocTky$pair <- rownames(vocTky)
 vocTky$pair <- c("Golden-German", "Labrador-German", "Labrador-Golden")
-vocTkyPlot <- ggplot(vocTky, aes(colour=cut(`p adj`, c(0, 0.05, 1), label=c("p<0.05","Non-Sig")))) + geom_hline(yintercept=0, lty="11") +
+vocTkyPlot <- ggplot(vocTky, aes(colour=cut(`p adj`, c(0, 0.05, 1), label=c("p<0.05","Non-Sig")))) + 
+    geom_hline(yintercept=0, lty="11") +
     geom_errorbar(aes(pair, ymin=lwr, ymax=upr), width=0.4) +
     geom_point(aes(pair, diff)) +
-    labs(colour="", x = "Breed Pairing", y = "Difference in Mean Latency to Vocalize Score", title = "95% Confidence Interval") + theme(plot.title = element_text(hjust = 0.50))
+    labs(colour="", x = "Breed Pairing", y = "Difference in Mean Latency to Vocalize Score", title = "95% Confidence Interval") + theme(plot.title = element_text(hjust = 0.50)) +
+    theme(legend.position = "none")
+
+tkyPlots <- cowplot::plot_grid(umbTkyPlot, vocTkyPlot, labels = "AUTO")
+
 
 #############################################
 #######    ANALYSIS PART 3: PAIRED    #######
@@ -148,4 +153,4 @@ vocFailure <- t.test(ZNovLatVoc ~ Failure, data = puppyData, var.equal = TRUE)
 Outcome <- as.character(puppyData$Failure)
 vocOutcome <- ggplot(puppyData, aes(Outcome, ZNovLatVoc, color=Outcome)) +
     geom_boxplot() +
-    labs(y = "Z-score", title = "Latency to vocalize when introduced to novel object and guide dog program outcome", caption = "Puppies that succeeded in the guide dog program had a statistically significant longer latency to vocalize when introduced to \na novel object than puppies that failed (t(96) = 2.8574, p = .0052).") + scale_x_discrete(labels = c("Success", "Failure")) + theme(plot.title = element_text(hjust = 0.50), plot.caption = element_text(hjust = 0, face = "italic"))
+    labs(y = "Z-score", title = "Latency to vocalize when introduced to novel object and guide dog program outcome", caption = "Puppies that succeeded in the guide dog program had a statistically significant longer latency to vocalize when introduced to \na novel object than puppies that failed (t(96) = 2.8574, p = .0052).") + scale_x_discrete(labels = c("Success", "Failure")) + theme(plot.title = element_text(hjust = 0.50), plot.caption = element_text(hjust = 0, face = "italic"), legend.position = "none")
