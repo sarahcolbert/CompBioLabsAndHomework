@@ -5,13 +5,13 @@
 #Import Puppy Data
 guideDogData <- read.csv("puppyData.csv", stringsAsFactors = F)
 
-#Subset Columns with Data we want (puppy number, failure, breed)
-guideDogData <- guideDogData[, c(1,2,9)]
+#Subset Columns with Data we want puppy number (column1), failure (column2), breed (column9)
+guideDogData <- guideDogData[, c(1,2,9)] 
 
 #Import Puppy Z Scores Data
 puppyZScores <- read.csv("puppyZScores.csv", stringsAsFactors = F)
 
-#Subset Columns with Data we want (z scores for solving, vocalizing, umbrella response)
+#Subset Columns with Data we want z scores for solving (column17), vocalizing (column29), umbrella response (column30)
 puppyZScores <- puppyZScores[, c(17,29,30)]
 
 #Merge guideDogData and puppyZScores data frames horizontally
