@@ -48,7 +48,7 @@ Four one-way ANOVAs were conducted to compare the effect of dog breed (German Sh
 Post hoc comparisons using the Tukey HSD test indicated that the mean umbrella reaction score for Labrador Retrievers (M = -0.3643) was significantly different than for German Shepherds (M = 0.4008) (p=.0013) and Golden Retrievers (M=0.3256) (p=.0470). However, Golden Retrievers did not significantly differ from German Shepherds for this score (p=.9640). These results suggest that Labrador Retrievers react much more calmly to an umbrella opening than do German Shepherds or Golden Retrievers. 
 
 ![umbrella reaction tukey plot](umbTkyPlot.png)
-**Fig. 2.** Tukey HSD test results showing difference in mean umbrella reaction scores for each breed pairing. Red indicates a significant difference while blue indicates a non-significant difference. 
+ **Fig. 2.** Tukey HSD test results showing difference in mean umbrella reaction scores for each breed pairing. Red indicates a significant difference while blue indicates a non-significant difference. 
 
 To determine how influential this difference can be on a dog's outcome in the guide dog program, I performed a two sample t-test to compare umbrella reaction scores in dogs that succeeded and dogs that failed in the program. There was not a significant difference in the scores for dogs that succeeded (M=-0.0242) and dogs that failed (M=0.1901); t (96)=2.8574, p = .3318. These results suggest that performance on the umbrella opening task did not significantly contribute to a dog's outcome in the program, which is why a high performance on this task by Labrador Retrievers is not reflected in an overall high success rate in Labrador Retrievers. 
 
@@ -56,12 +56,12 @@ To determine how influential this difference can be on a dog's outcome in the gu
 The same procedure was used to assess mean latency to vocalize scores. Post hoc comparisons using the Tukey HSD test indicated that the mean latency to vocalize score for Labrador Retrievers (M = -0.3812) was significantly different than for German Shepherds (M = 0.2409) (p=.0110). However, Golden Retrievers (M = 0.1835) did not significantly differ from Labrador Retrievers or German Shepherds for this score. These results suggest that Labrador Retrievers vocalized significantly quicker when introduced to a novel object than German Shepherds. 
 
 ![Tukey results for breed and latency to vocalize](vocTkyPlot.png)
-**Fig. 3.** Tukey HSD test results showing difference in mean latency to vocalize scores for each breed pairing. Red indicates a significant difference while blue indicates a non-significant difference. 
+ **Fig. 3.** Tukey HSD test results showing difference in mean latency to vocalize scores for each breed pairing. Red indicates a significant difference while blue indicates a non-significant difference. 
 
 To determine how influential this difference can be on a dog's outcome in the guide dog program, I once again performed a two sample t-test to compare latency to vocalize scores in dogs that succeeded and dogs that failed in the program. There was a significant difference in the scores for dogs that succeeded (M=0.1460) and dogs that failed (M=-0.4455); t (96)=2.8574, p=.0052. These results suggest that dogs who succeeded in the program waited much longer to vocalize when introduced to a novel object than dogs that failed. Specifically, this may suggest that high Labrador Retriever failure rates compared to German Shepherds could possibly be related to their short latency to vocalize when introduced to a novel object. 
 
 ![Vocalization and outcome plot](vocOutcomePlot.png)
-**Fig. 4.** Relationship between guide dog program outcome and latency to vocalize when introduced to a novel object. Successful dogs showed a longer latency to vocalize than dogs that failed. 
+ **Fig. 4.** Relationship between guide dog program outcome and latency to vocalize when introduced to a novel object. Successful dogs showed a longer latency to vocalize than dogs that failed. 
 
 In conclusion, outcome in the guide dog program is not statistically different for different breeds, however some behaviors and traits show statistically significant differences for different breeds and those behaviors and traits affect outcome in the guide dog program. This indicates that behavioral differences amongst breeds can influence success. More research should be conducted and performed on a larger population to further examine the effects of breed. Determining the best breeds to use for guide work is important to saving resources in the breeding and training phases of guide dog programs.
 
