@@ -133,8 +133,7 @@ vocTkyPlot <- ggplot(vocTky, aes(colour=cut(`p adj`, c(0, 0.05, 1), label=c("p<0
     geom_hline(yintercept=0, lty="11") +
     geom_errorbar(aes(pair, ymin=lwr, ymax=upr), width=0.4) +
     geom_point(aes(pair, diff)) +
-    labs(colour="", x = "Breed Pairing", y = "Difference in Mean Latency to Vocalize Score", title = "95% Confidence Interval") + theme(plot.title = element_text(hjust = 0.50)) +
-    theme(legend.position = "none")
+    labs(colour="", x = "Breed Pairing", y = "Difference in Mean Latency to Vocalize Score", title = "95% Confidence Interval") + theme(plot.title = element_text(hjust = 0.50))
 
 tkyPlots <- cowplot::plot_grid(umbTkyPlot, vocTkyPlot, labels = "AUTO")
 
